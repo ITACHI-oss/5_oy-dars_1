@@ -3,7 +3,6 @@ import 'dart:convert';
 
 class ApiServices {
   final baseUrl = "https://fakestoreapi.com/products";
-
   //bu joyda apidan productlarni olib keladi
   Future<List<dynamic>> fetchProducts() async {
     final response = await http.get(Uri.parse(baseUrl));
@@ -17,12 +16,11 @@ class ApiServices {
     }
   }
 
-  // bu apidan categoryalarni get qiladi 
+  // bu apidan categoryalarni get qiladi                                              
   Future<List<String>> fetchCategories() async {
     final response = await http.get(
       Uri.parse('https://fakestoreapi.com/products/categories'),
     );
-
     //status 200 bolsa ma'lumotlar list<stringda> jsonda qaytadi
     if (response.statusCode == 200) {
       return List<String>.from(json.decode(response.body));
